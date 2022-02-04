@@ -1,7 +1,7 @@
 name: 'Read node version from package.json'
 description: 'Output node version number from package.json engines/node field'
 branding:
-  icon: 'check-square'
+  icon: 'activity'
   color: 'blue'
 inputs:
   path:
