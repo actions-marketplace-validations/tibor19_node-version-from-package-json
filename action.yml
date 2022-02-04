@@ -1,11 +1,11 @@
 name: 'Read node version from package.json'
-description: 'Output node version number from package.json engines field'
+description: 'Output node version number from package.json engines/node field'
 branding:
   icon: 'check-square'
   color: 'blue'
 inputs:
   path:
-    description: 'Path to package.json, either folder, or full file name'
+    description: 'Path to package.json, either folder, or full file name, default is package.json on the root folder'
     default: './'
     required: false
   fallback-version:
