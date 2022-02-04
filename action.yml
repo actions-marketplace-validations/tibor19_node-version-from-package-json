@@ -6,14 +6,14 @@ branding:
 inputs:
   path:
     description: 'Path to package.json, either folder, or full file name'
-    default: ''./'
+    default: './'
     required: false
   fallback-version:
-    description: 'Which version should use if package.json/engines/node is not found'
+    description: 'Which version should use if engines/node is not found in package.json'
     required: false
 outputs:
   version:
-    description: "Node version from engines field in package.json"
+    description: 'Node version from engines/node field in package.json'
 runs:
   using: 'node12'
   main: 'lib/index.js'
