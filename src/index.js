@@ -36,7 +36,7 @@ const getNodeVersion = async (fileOrFolder) => {
   if (!!packageJson) {
     const parsed = JSON.parse(packageJson);
     if(parsed && parsed.engines)
-    return parsed.engines.node;
+      return parsed.engines.node;
   }
   return null;
 };
