@@ -9,7 +9,7 @@ const { getInput, setFailed, debug, setOutput } = require('@actions/core');
  */
 const findPackageJson = async (fileOrFolder) => {
 
-  fileOrFolder = fileOrFolder ?? './';
+  fileOrFolder = fileOrFolder || './';
   if(fs.existsSync(fileOrFolder)){
     if((await fs.promises.stat(fileOrFolder)).isFile()){
       return (await fs.promises.readFile(fileOrFolder)).toString();
@@ -34,7 +34,9 @@ const getNodeVersion = async (fileOrFolder) => {
   const packageJson = await findPackageJson(fileOrFolder);
 
   if (!!packageJson) {
-    return JSON.parse(packageJson)?.engines?.node;
+    const parsed = JSON.parse(packageJson);
+    if(parsed && parsed.engines)
+    return parsed.engines.node;
   }
   return null;
 };
@@ -48,7 +50,7 @@ const main = async () => {
   const fallback = getInput('fallback-version')
   debug(`Fallback version ${fallback}`);
 
-  const result = (await getNodeVersion(fileOrFolder)) ?? fallback;
+  const result = (await getNodeVersion(fileOrFolder)) || fallback;
 
   debug(`set output: version: ${result}`);
   setOutput('version', result);
