@@ -1,0 +1,19 @@
+name: 'Read package.json node version'
+description: 'Output node version number from package.json engines field'
+branding:
+  icon: 'check-square'
+  color: 'blue'
+inputs:
+  path:
+    description: 'Path to package.json, either folder, or full file name'
+    default: ''./'
+    required: false
+  fallback-version:
+    description: 'Which version should use if package.json/engines/node is not found'
+    required: false
+outputs:
+  version:
+    description: "Node version from engines field in package.json"
+runs:
+  using: 'node12'
+  main: 'lib/index.js'

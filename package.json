@@ -1,0 +1,38 @@
+{
+  "name": "node-version-from-package-json",
+  "version": "1.0.0",
+  "description": "Output node version numbers from package.json",
+  "engines": {
+    "node": "16.3.x"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -C --out lib/",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tibor19/read-package-node-version-actions.git"
+  },
+  "keywords": [
+    "actions",
+    "node",
+    "setup"
+  ],
+  "author": {
+    "name": "Tiberiu Covaci",
+    "url": "https://github.com/tibor19"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tibor19/static-website-deploy/issues"
+  },
+  "homepage": "https://github.com/tibor19/static-website-deploy#readme",
+  "dependencies": {
+    "@actions/core": "^1.6.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "0.33.1",
+    "@types/node": "12.20.43"
+  }
+}

@@ -1,0 +1,60 @@
+name: "Test"
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+      - 'releases/*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - uses: actions/cache@v1
+      id: cache
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-npm-
+
+    - name: Unit Test
+      run: npm test
+
+    - name: No input action test
+      uses: ./
+      id: version
+
+    - name: Get version
+      run: echo "Version is  ${{ steps.version.outputs.version }}"
+
+    - name: Current folder action test
+      uses: ./
+      id: version_current
+      with:
+        path: './'
+
+    - name: Get version
+      run: echo "Version is  ${{ steps.version_current.outputs.version }}"
+
+    - name: Wrong folder action test
+      uses: ./
+      id: version_wrong
+      with:
+        path: './abc'
+
+    - name: Get version
+      run: echo "Version is  ${{ steps.version_wrong.outputs.version }}"
+
+    - name: Wrong folder fallback action test
+      uses: ./
+      id: version_wrong_fallback
+      with:
+        path: './abc'
+        fallback-version: '12.3.x'
+
+    - name: Get version
+      run: echo "Version is  ${{ steps.version_wrong_fallback.outputs.version }}"
+
