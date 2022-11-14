@@ -35,10 +35,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v3
 
       - name: Read node from package.json
-        uses: tibor19/node-version-from-package-json@v1
+        uses: tibor19/node-version-from-package-json@v2
         id: node-version
         with:
           fallback-version: '16.18.1'
@@ -48,7 +48,7 @@ jobs:
         # Version is 16.18.1
 
       - name: Set up Node.js version
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: '${{ steps.package-version.outputs.version }}'
 ```
