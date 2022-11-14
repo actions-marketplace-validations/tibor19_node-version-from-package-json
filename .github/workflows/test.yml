@@ -10,9 +10,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v3
 
-    - uses: actions/cache@v1
+    - uses: actions/cache@v3
       id: cache
       with:
         path: node_modules
@@ -53,8 +53,7 @@ jobs:
       id: version_wrong_fallback
       with:
         path: './abc'
-        fallback-version: '12.3.x'
+        fallback-version: '16.8.x'
 
     - name: Get version
       run: echo "Version is  ${{ steps.version_wrong_fallback.outputs.version }}"
-

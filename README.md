@@ -19,7 +19,7 @@ Path of `package.json`, `./` by default. If path points to a file, then node ver
 {
   "name": "your-package",
   "engines": {
-    "node": "16.3.x"
+    "node": "16.18.1"
   }
 }
 ```
@@ -41,11 +41,11 @@ jobs:
         uses: tibor19/node-version-from-package-json@v1
         id: node-version
         with:
-          fallback-version: '16.3.x'
+          fallback-version: '16.18.1'
 
       - name: Show node version number
         run: echo "Version is ${{ steps.node-version.outputs.version }}"
-        # Version is 16.3.x
+        # Version is 16.18.1
 
       - name: Set up Node.js version
         uses: actions/setup-node@v1

@@ -15,5 +15,5 @@ outputs:
   version:
     description: 'Node version from engines/node field in package.json'
 runs:
-  using: 'node12'
-  main: 'lib/index.js'
+  using: 'node16'
+  main: 'dist/index.js'
